@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/test")
     @ResponseBody
-    User getUserInfo(){
+    public User getUserInfo(){
         User user = new User();
         user = userService.getUser();
         return user;
