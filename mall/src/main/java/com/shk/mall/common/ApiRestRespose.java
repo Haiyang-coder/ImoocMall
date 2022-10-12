@@ -1,8 +1,6 @@
 package com.shk.mall.common;
 
-import com.shk.mall.exception.ImoocMallEception;
-
-import java.util.ArrayList;
+import com.shk.mall.exception.ImoocMallExceptionEnum;
 
 /**
  * @author: sunhengkang
@@ -80,7 +78,7 @@ public class ApiRestRespose <T>{
         return new ApiRestRespose<>(code, msg);
     }
 
-    public static <T> ApiRestRespose<T> error(ImoocMallEception e){
+    public static <T> ApiRestRespose<T> error(ImoocMallExceptionEnum e){
         return new ApiRestRespose<>(e.getCode(), e.getMsg());
     }
 
