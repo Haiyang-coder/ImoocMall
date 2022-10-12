@@ -5,6 +5,7 @@ import com.shk.mall.exception.ImoocMallExceptionEnum;
 import com.shk.mall.model.dao.UserMapper;
 import com.shk.mall.model.pojo.User;
 import com.shk.mall.service.UserService;
+import com.shk.mall.utils.GetMD5Util;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,11 +34,37 @@ public class UserServiceImpl implements UserService {
 
         User user1 = new User();
         user1.setUsername(username);
-        user1.setPassword(password);
+        String passwordAddSalt = GetMD5Util.addSalt(password);
+        String md5Code = GetMD5Util.getMd5Code(passwordAddSalt);
+        user1.setPassword(md5Code);
         int i = userMapper.insertSelective(user1);
         if (i != 1){
             throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_INSERT_FAILED);
         }
 
+    }
+
+    @Override
+    public User login(String username, String password) {
+        String s = GetMD5Util.addSalt(password);
+        String md5Code = GetMD5Util.getMd5Code(s);
+        User user = userMapper.selectByUsernameAndPassword(username, md5Code);
+        if(user == null){
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_USERNAM_OR_PASSWORD);
+        }
+        return user;
+    }
+
+    @Override
+    public void updateUserInfomation(User user) {
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        if(i != 1){
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_INSERT_FAILED);
+        }
+    }
+
+    @Override
+    public User adminLogin(String username, String password) {
+        return null;
     }
 }

@@ -11,6 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public interface UserService {
     User getUser();
-
+    //注册新用户
     void registerUser(String username, String password) throws ImoocMallException;
+    //普通用户登录
+    User login(String username, String Password);
+    //更新用户签名
+    void updateUserInfomation(User user);
+    //管理员登录
+    User adminLogin(String username, String password);
 }
