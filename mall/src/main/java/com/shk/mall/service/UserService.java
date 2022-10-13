@@ -19,4 +19,6 @@ public interface UserService {
     void updateUserInfomation(User user);
     //管理员登录
     User adminLogin(String username, String password);
+
+    boolean checkIfAdmin(User user);
 }

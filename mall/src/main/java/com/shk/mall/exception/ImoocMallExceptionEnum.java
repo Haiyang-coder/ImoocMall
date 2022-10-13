@@ -6,13 +6,16 @@ package com.shk.mall.exception;
  */
 public enum ImoocMallExceptionEnum {
     ERROR_USERNAME(10001,"用户名错误"),
-    ERROR_USERNAME_EXIST(10002,"username has existed"),
+    ERROR_NAME_EXIST(10002,"name has existed"),
     ERROR_USERNAMEORPASSWORD_EMPTY(10003,"用户名和密码存在空的一项"),
     ERROR_INSERT_FAILED(10005,"insert failed try later"),
     ERROR_SYSTEM(20000,"SYSTEM ERROR"),
     ERROR_USERNAM_OR_PASSWORD(10006,"用户名或者密码错误 "),
-    ERROR_USERNAM_NOT_LOGIN(10007,"用户没有登录 "),
-    ERROR_ROLE(100078,"没有管理员权限 "),
+    ERROR_NOT_LOGIN(10007,"用户没有登录 "),
+    ERROR_ROLE(10008,"没有管理员权限 "),
+    ERROR_SQL_INSERT(10009,"操作失败,请稍后再试"),
+
+    ERROR_PARAM(10009,"参数错误"),
     ERROR_PASSWORD_SHORT(10004,"密码太短了");
     /**
      * 异常码

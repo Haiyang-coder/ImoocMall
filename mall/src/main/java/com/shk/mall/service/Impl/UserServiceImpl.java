@@ -6,7 +6,6 @@ import com.shk.mall.model.dao.UserMapper;
 import com.shk.mall.model.pojo.User;
 import com.shk.mall.service.UserService;
 import com.shk.mall.utils.GetMD5Util;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public void registerUser(String username, String password) throws ImoocMallException {
         User user = userMapper.selectByUsername(username);
         if(user != null){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_USERNAME_EXIST);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_NAME_EXIST);
         }
 
         User user1 = new User();
@@ -66,5 +65,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User adminLogin(String username, String password) {
         return null;
+    }
+
+    @Override
+    public boolean checkIfAdmin(User user) {
+        return user.getRole().equals(2);
     }
 }

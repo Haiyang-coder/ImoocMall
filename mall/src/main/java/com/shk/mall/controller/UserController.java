@@ -72,7 +72,7 @@ public class UserController {
         User user = (User)session.getAttribute(MallCommon.IMOOC_MALL_USER);
         if (user == null)
         {
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_USERNAM_NOT_LOGIN);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_NOT_LOGIN);
         }
         //个性签名都为空
         if(StringUtils.isNullOrEmpty(signature)
@@ -113,7 +113,7 @@ public class UserController {
         }
         User login = userService.login(username, password);
 
-        if(login.getRole() == 1){
+        if(!userService.checkIfAdmin(login)){
             return ApiRestRespose.error(ImoocMallExceptionEnum.ERROR_ROLE);
         }
         login.setPassword(null);
