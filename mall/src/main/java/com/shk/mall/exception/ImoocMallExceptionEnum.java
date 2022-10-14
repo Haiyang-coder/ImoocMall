@@ -15,7 +15,9 @@ public enum ImoocMallExceptionEnum {
     ERROR_ROLE(10008,"没有管理员权限 "),
     ERROR_SQL_Update(10009,"操作失败,请稍后再试"),
 
-    ERROR_PARAM(10009,"参数错误"),
+    ERROR_PARAM(100012,"参数错误"),
+    ERROR_DELETE(10010,"删除失败"),
+    ERROR_SQL_DELETE(10011,"删除失败"),
     ERROR_PASSWORD_SHORT(10004,"密码太短了");
     /**
      * 异常码

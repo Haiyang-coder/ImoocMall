@@ -56,8 +56,8 @@ public class AdminFilter implements Filter {
             PrintWriter out = new HttpServletResponseWrapper(
                     (HttpServletResponse) response).getWriter();
             out.write("{\n"
-                    + "    \"status\": 10009,\n"
-                    + "    \"msg\": \"NEED_ADMIN\",\n"
+                    + "    \"status\": 10008,\n"
+                    + "    \"msg\": \"ERROR_ROLE\",\n"
                     + "    \"data\": null\n"
                     + "}");
             out.flush();
