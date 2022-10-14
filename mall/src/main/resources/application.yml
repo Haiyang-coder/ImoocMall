@@ -7,5 +7,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/imooc_mall?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: shkwmnm7010500
+
 mybatis:
   mapper-locations: mappers/*.xml

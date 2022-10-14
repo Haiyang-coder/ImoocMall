@@ -8,6 +8,7 @@ import com.shk.mall.exception.ImoocMallExceptionEnum;
 import com.shk.mall.model.dao.CategoryMapper;
 import com.shk.mall.model.pojo.Category;
 import com.shk.mall.model.request.AddCategoryRequest;
+import com.shk.mall.model.request.UpdateCategoryReq;
 import com.shk.mall.service.CategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,13 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryMapper categoryMapper;
 
 
+    /*
+     * @description:添加新的目录
+     * @author: yanhongwei
+     * @date: 2022/10/13 15:56
+     * @param: [addCategoryRequest]
+     * @return: void
+     **/
     @Override
     public void add(AddCategoryRequest addCategoryRequest) {
         Category category = new Category();
@@ -37,8 +45,36 @@ public class CategoryServiceImpl implements CategoryService {
         }
         int insert = categoryMapper.insertSelective(category);
         if (insert != 1){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_INSERT);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_Update);
         }
 
+    }
+
+    /*
+     * @description:更新category的数据库
+     * @author: yanhongwei
+     * @date: 2022/10/13 15:56
+     * @param: [updateCategory]
+     * @return: void
+     **/
+    @Override
+    public void update(UpdateCategoryReq updateCategory) {
+        Category category = new Category();
+        BeanUtils.copyProperties(updateCategory, category);
+        Category categoryOld = categoryMapper.selectByName(updateCategory.getName());
+        if (updateCategory.getName() != null) {
+            if (categoryOld != null && !categoryOld.getId().equals(updateCategory.getId())){
+                throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_NAME_EXIST);
+            }
+        }
+        UpdateCategory(category);
+    }
+
+
+    private void UpdateCategory(Category category){
+        int count = categoryMapper.updateByPrimaryKeySelective(category);
+        if (count != 1){
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_Update);
+        }
     }
 }

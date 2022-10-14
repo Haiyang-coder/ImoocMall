@@ -5,8 +5,10 @@ import com.shk.mall.common.MallCommon;
 import com.shk.mall.exception.ImoocMallExceptionEnum;
 import com.shk.mall.model.pojo.User;
 import com.shk.mall.model.request.AddCategoryRequest;
+import com.shk.mall.model.request.UpdateCategoryReq;
 import com.shk.mall.service.CategoryService;
 import com.shk.mall.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +37,7 @@ public class CategoryController {
  * @param: [session, addCategoryRequest]
  * @return:
  **/
+    @ApiOperation("后台添加目录")
     @PostMapping("/admin/category/add")
     @ResponseBody
     public ApiRestRespose addCategoryReq(HttpSession session,
@@ -47,6 +50,15 @@ public class CategoryController {
             return ApiRestRespose.error(ImoocMallExceptionEnum.ERROR_ROLE);
         }
         categoryService.add(addCategoryRequest);
+        return ApiRestRespose.success();
+    }
+
+    @PostMapping("/admin/category/update")
+    @ResponseBody
+    @ApiOperation("后台更新目录")
+    public ApiRestRespose updateCatgory(HttpSession session,
+                                        @Valid @RequestBody UpdateCategoryReq updateCategory){
+        categoryService.update(updateCategory);
         return ApiRestRespose.success();
     }
 }

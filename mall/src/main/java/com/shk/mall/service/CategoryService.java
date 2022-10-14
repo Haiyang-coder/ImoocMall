@@ -1,6 +1,7 @@
 package com.shk.mall.service;
 
 import com.shk.mall.model.request.AddCategoryRequest;
+import com.shk.mall.model.request.UpdateCategoryReq;
 
 /**
  * @
@@ -9,4 +10,6 @@ import com.shk.mall.model.request.AddCategoryRequest;
  */
 public interface CategoryService {
     public void add(AddCategoryRequest addCategoryRequest);
+
+    public void update(UpdateCategoryReq updateCategory);
 }
