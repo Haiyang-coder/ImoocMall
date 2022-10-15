@@ -8,7 +8,7 @@ public enum ImoocMallExceptionEnum {
     ERROR_USERNAME(10001,"用户名错误"),
     ERROR_NAME_EXIST(10002,"name has existed"),
     ERROR_USERNAMEORPASSWORD_EMPTY(10003,"用户名和密码存在空的一项"),
-    ERROR_INSERT_FAILED(10005,"insert failed try later"),
+    ERROR_SQL_INSERT(10005,"insert failed try later"),
     ERROR_SYSTEM(20000,"SYSTEM ERROR"),
     ERROR_USERNAM_OR_PASSWORD(10006,"用户名或者密码错误 "),
     ERROR_NOT_LOGIN(10007,"用户没有登录 "),

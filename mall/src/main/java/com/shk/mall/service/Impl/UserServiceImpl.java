@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         user1.setPassword(md5Code);
         int i = userMapper.insertSelective(user1);
         if (i != 1){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_INSERT_FAILED);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_INSERT);
         }
 
     }
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
     public void updateUserInfomation(User user) {
         int i = userMapper.updateByPrimaryKeySelective(user);
         if(i != 1){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_INSERT_FAILED);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_INSERT);
         }
     }
 
