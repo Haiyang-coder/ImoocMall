@@ -1,14 +1,32 @@
-package com.shk.mall.model.request;
+package com.shk.mall.model.request;/**
+ * @author: sunhengkang
+ * @date:2022/10/17
+ */
 
-import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
 
-@Valid
-public class AddProductRequst {
+/**
+ *@BelongsProject: mall
+ *@BelongsPackage: com.shk.mall.model.request
+ *@Author: sunhaiyang
+ *@CreateTime: 2022-10-17  15:45
+ *@Description: TODO
+ *@Version: 1.0
+ */
+public class UpdateProductReq {
+    @NotNull(message = "id不能为空")
+    private Integer  id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @NotNull(message = "名字不能为空")
     private String name;
 

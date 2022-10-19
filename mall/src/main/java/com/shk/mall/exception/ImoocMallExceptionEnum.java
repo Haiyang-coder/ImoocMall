@@ -13,11 +13,14 @@ public enum ImoocMallExceptionEnum {
     ERROR_USERNAM_OR_PASSWORD(10006,"用户名或者密码错误 "),
     ERROR_NOT_LOGIN(10007,"用户没有登录 "),
     ERROR_ROLE(10008,"没有管理员权限 "),
-    ERROR_SQL_Update(10009,"操作失败,请稍后再试"),
+    ERROR_SQL_UPDATE(10009,"操作失败,请稍后再试"),
 
-    ERROR_PARAM(100012,"参数错误"),
+    ERROR_PARAM(10012,"参数错误"),
     ERROR_DELETE(10010,"删除失败"),
     ERROR_SQL_DELETE(10011,"删除失败"),
+    ERROR_IO_FILE_MAKE(10013,"文件创建失败"),
+    ERROR_UPLOAD(10014,"上传失败"),
+    ERROR_NOT_EXIST(10015,"不存在"),
     ERROR_PASSWORD_SHORT(10004,"密码太短了");
     /**
      * 异常码

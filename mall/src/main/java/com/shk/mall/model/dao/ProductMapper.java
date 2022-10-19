@@ -1,7 +1,11 @@
 package com.shk.mall.model.dao;
 
 import com.shk.mall.model.pojo.Product;
+import com.shk.mall.model.query.ProductListQuery;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface ProductMapper {
@@ -18,4 +22,10 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     Product selectByName(String name);
+
+    int batchUpdateSellStatus(@Param("ids") Integer[] ids,@Param("sellStatus") Integer sellStatus);
+
+    List<Product> selectListForAdmin();
+
+    List<Product> selectList(@Param("query") ProductListQuery productListQuery);
 }

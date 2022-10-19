@@ -53,7 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
         }
         int insert = categoryMapper.insertSelective(category);
         if (insert != 1){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_Update);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_UPDATE);
         }
 
     }
@@ -125,7 +125,7 @@ public class CategoryServiceImpl implements CategoryService {
     private void UpdateCategory(Category category){
         int count = categoryMapper.updateByPrimaryKeySelective(category);
         if (count != 1){
-            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_Update);
+            throw new ImoocMallException(ImoocMallExceptionEnum.ERROR_SQL_UPDATE);
         }
     }
 }
